@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './components/index';
-import reducers from './reducers';
+import App from './weatherApp/components/index';
+import reducers from './weatherApp/reducers/index';
+import ReduxPromise from 'redux-promise';
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <Index />
+        <App />
     </Provider>
     , document.querySelector('#root'));
